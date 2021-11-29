@@ -9,19 +9,27 @@ class App extends Component {
 
     this.state = {
       summonerName: "",
-      region: "BRAZIL"
+      region: "BRAZIL",
+
+      champions: []
     }
   }
 
   buttonClicked = (e) => {
     e.preventDefault();
-    console.log("https://chest-api.azurewebsites.net/summonerName/"+this.state.summonerName+"/region/"+this.state.region);
-    fetch("https://chest-api.azurewebsites.net/summonerName/"+this.state.summonerName+"/region/"+this.state.region)
-    .then(response => response.json())
-    .then(data => console.log(data));
+    console.log("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region);
+    fetch("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ champions: data.champions })
+        console.log(this.state.champions)
+      });
   }
 
   render() {
+
+    const champions = this.state.champions.map((data) => <ChampionCard champion={data} />)
+
     return (
       <div className="container mt-96">
         <h1 class="font-extrabold text-transparent text-8xl bg-clip-text leading-normal bg-gradient-to-r from-green-400 to-blue-500">Hextech Discovery</h1>
@@ -52,15 +60,7 @@ class App extends Component {
         </form>
         <div className="mt-3 p-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl">
           <div className="grid grid-cols-6 gap-4 p-3 bg-gray-200 rounded-3xl">
-            <ChampionCard />
-            <ChampionCard />
-            <ChampionCard />
-            <ChampionCard />
-            <ChampionCard />
-            <ChampionCard />
-            <ChampionCard />
-            <ChampionCard />
-            <ChampionCard />
+            {champions}
           </div>
         </div>
       </div>
