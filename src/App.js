@@ -5,7 +5,7 @@ import ChampionCard from './components/ChampionCard';
 class App extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       summonerName: "",
