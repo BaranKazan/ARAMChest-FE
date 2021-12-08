@@ -21,48 +21,48 @@ class App extends Component {
     fetch("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region)
       .then(response => response.json())
       .then(data => {
-        this.setState({ champions: data.champions })
-        console.log(this.state.champions)
+        this.setState({ champions: data.champions.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)) })
       });
   }
 
   render() {
-
-    const champions = this.state.champions.map((data) => <ChampionCard champion={data} />)
+    const champions = this.state.champions.map((data) => <ChampionCard key={data.name} champion={data} />);
 
     return (
-      <div className="container mt-96">
+      <div className="container">
         <h1 class="font-extrabold text-transparent text-8xl bg-clip-text leading-normal bg-gradient-to-r from-green-400 to-blue-500">Hextech Discovery</h1>
-        <form>
-          <div className="flex flex-row">
-            <div className="flex flex-col bg-white shadow-2xl rounded-md p-1 mr-3">
-              <label>Summoner Name:</label>
-              <input onChange={e => this.setState({ summonerName: e.target.value })}></input>
-            </div>
-            <div className="flex flex-col bg-white shadow-2xl rounded-md p-1 mr-3">
-              <label>Region:</label>
-              <select onChange={e => this.setState({ region: e.target.value })}>
-                <option value="BRAZIL">BR</option>
-                <option value="EUROPE_NORTH_EAST">EUNE</option>
-                <option value="EUROPE_WEST">EUW</option>
-                <option value="JAPAN">JP</option>
-                <option value="KOREA">KR</option>
-                <option value="LATIN_AMERICA_NORTH">LAN</option>
-                <option value="LATIN_AMERICA_SOUTH">LAS</option>
-                <option value="NORTH_AMERICA">NA</option>
-                <option value="OCEANIA">OCE</option>
-                <option value="RUSSIA">RU</option>
-                <option value="TURKEY">TR</option>
-              </select>
-            </div>
-            <button onClick={this.buttonClicked} class="py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Click me</button>
+        <form className="flex">
+          <div className="flex flex-col flex-grow bg-white shadow-2xl rounded-lg p-3 mr-3">
+            <label className="mb-1">Summoner Name:</label>
+            <input placeholder="Kinkymonkey" className="w-full text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
+          </div>
+          <div className="flex flex-col flex-none bg-white shadow-2xl rounded-lg p-3 mr-3">
+            <label className="mb-1">Region:</label>
+            <select className="py-2 text-sm text-black border border-gray-200 rounded-md" onChange={e => this.setState({ region: e.target.value })}>
+              <option value="BRAZIL">BR</option>
+              <option value="EUROPE_NORTH_EAST">EUNE</option>
+              <option value="EUROPE_WEST">EUW</option>
+              <option value="JAPAN">JP</option>
+              <option value="KOREA">KR</option>
+              <option value="LATIN_AMERICA_NORTH">LAN</option>
+              <option value="LATIN_AMERICA_SOUTH">LAS</option>
+              <option value="NORTH_AMERICA">NA</option>
+              <option value="OCEANIA">OCE</option>
+              <option value="RUSSIA">RU</option>
+              <option value="TURKEY">TR</option>
+            </select>
+          </div>
+          <div className="flex-initial flex-none">
+            <button onClick={this.buttonClicked} class="h-full py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Click me</button>
           </div>
         </form>
-        <div className="mt-3 p-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl">
-          <div className="grid grid-cols-6 gap-4 p-3 bg-gray-200 rounded-3xl">
-            {champions}
+        {this.state.champions.length !== 0 &&
+          <div className="mt-3 p-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl">
+            <div className="grid grid-cols-6 gap-4 p-3 bg-gray-200 rounded-3xl">
+              {champions}
+            </div>
           </div>
-        </div>
+        }
       </div>
     );
   }
