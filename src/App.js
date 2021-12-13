@@ -30,10 +30,10 @@ class App extends Component {
 
     return (
       <div class="flex flex-wrap flex-col justify-center items-center">
-        <form className="flex items-center pt-8">
+        <form className="flex items-stretch pt-8">
           <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 mx-2">
             <label className="mb-1">Summoner Name:</label>
-            <input placeholder="Kinkymonkey" className="w-full text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
+            <input placeholder="Kinkymonkey" className="text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
           </div>
           <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 mx-2">
             <label className="mb-1">Region:</label>
@@ -51,8 +51,8 @@ class App extends Component {
               <option value="TURKEY">TR</option>
             </select>
           </div>
-          <div className="flex-initial flex-none mx-2">
-            <button onClick={this.buttonClicked} class="h-12 shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Click me</button>
+          <div className="flex-none mx-2">
+            <button onClick={this.buttonClicked} class="h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Click me</button>
           </div>
         </form>
         {this.state.champions.length !== 0 &&
