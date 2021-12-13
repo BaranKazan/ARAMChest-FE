@@ -10,8 +10,8 @@ class App extends Component {
     this.state = {
       summonerName: "",
       region: "BRAZIL",
-
-      champions: []
+      champions: [],
+      loading: false
     }
   }
 
@@ -29,14 +29,13 @@ class App extends Component {
     const champions = this.state.champions.map((data) => <ChampionCard key={data.name} champion={data} />);
 
     return (
-      <div className="container">
-        <h1 class="font-extrabold text-transparent text-8xl bg-clip-text leading-normal bg-gradient-to-r from-green-400 to-blue-500">Hextech Discovery</h1>
-        <form className="flex">
-          <div className="flex flex-col flex-grow bg-white shadow-2xl rounded-lg p-3 mr-3">
+      <div class="flex flex-wrap flex-col justify-center items-center">
+        <form className="flex items-center pt-8">
+          <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 mx-2">
             <label className="mb-1">Summoner Name:</label>
             <input placeholder="Kinkymonkey" className="w-full text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
           </div>
-          <div className="flex flex-col flex-none bg-white shadow-2xl rounded-lg p-3 mr-3">
+          <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 mx-2">
             <label className="mb-1">Region:</label>
             <select className="py-2 text-sm text-black border border-gray-200 rounded-md" onChange={e => this.setState({ region: e.target.value })}>
               <option value="BRAZIL">BR</option>
@@ -52,13 +51,13 @@ class App extends Component {
               <option value="TURKEY">TR</option>
             </select>
           </div>
-          <div className="flex-initial flex-none">
-            <button onClick={this.buttonClicked} class="h-full py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Click me</button>
+          <div className="flex-initial flex-none mx-2">
+            <button onClick={this.buttonClicked} class="h-12 shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Click me</button>
           </div>
         </form>
         {this.state.champions.length !== 0 &&
           <div className="mt-3 p-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl">
-            <div className="grid grid-cols-6 gap-4 p-3 bg-gray-200 rounded-3xl">
+            <div className="grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-4 p-3 bg-gray-200 rounded-3xl">
               {champions}
             </div>
           </div>
