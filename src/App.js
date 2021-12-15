@@ -19,14 +19,28 @@ class App extends Component {
     e.preventDefault();
     console.log("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region);
     fetch("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region)
-      .then(response => response.json())
+      .then(response => {
+        this.setState({ loading: true });
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
       .then(data => {
         this.setState({ champions: data.champions.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)) })
-      });
+      })
+      .catch(error => console.log(error))
+      .finally(() => this.setState({ loading: false }))
   }
+
 
   render() {
     const champions = this.state.champions.map((data) => <ChampionCard key={data.name} champion={data} />);
+    let button;
+    if (this.state.loading)
+      button = <button onClick={this.buttonClicked} class="animate-bounce h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" disabled>Searching...</button>;
+    else
+      button = <button onClick={this.buttonClicked} class="h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Search</button>;
 
     return (
       <div class="flex flex-wrap flex-col justify-center items-center">
@@ -52,7 +66,7 @@ class App extends Component {
             </select>
           </div>
           <div className="flex-none mx-2">
-            <button onClick={this.buttonClicked} class="h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Click me</button>
+            {button}
           </div>
         </form>
         {this.state.champions.length !== 0 &&
