@@ -58,12 +58,12 @@ class App extends Component {
 
     let button;
     if (this.state.loading)
-      button = <button onClick={this.buttonClicked} class="animate-bounce h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" disabled>Searching...</button>;
+      button = <button onClick={this.buttonClicked} className="animate-bounce h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" disabled>Searching...</button>;
     else
-      button = <button onClick={this.buttonClicked} class="h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Search</button>;
+      button = <button onClick={this.buttonClicked} className="h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Search</button>;
 
     return (
-      <div class="flex flex-wrap flex-col justify-center items-center">
+      <div className="flex flex-wrap flex-col justify-center items-center">
         <form className="flex items-stretch pt-8">
           <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 mx-2">
             <label className="mb-1">Summoner Name:</label>
