@@ -1,6 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import ChampionCard from './components/ChampionCard';
+import SummonerCard from './components/SummonerCard'
 
 class App extends Component {
 
@@ -11,7 +12,14 @@ class App extends Component {
       summonerName: "",
       region: "BRAZIL",
       champions: [],
-      loading: false
+      loading: false,
+
+      requestedSummoner: {
+        name: "",
+        region: "",
+        level: 0,
+        iconURL: ""
+      }
     }
   }
 
@@ -27,7 +35,17 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        this.setState({ champions: data.champions.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)) })
+        this.setState(prevState => {
+          let requestedSummoner = Object.assign({}, prevState.requestedSummoner);
+          requestedSummoner.name = data.summonerName;
+          requestedSummoner.region = data.region;
+          requestedSummoner.level = data.level;
+          requestedSummoner.iconURL = data.profileIconURL;
+          return { requestedSummoner };
+        })
+        this.setState({
+          champions: data.champions.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+        })
       })
       .catch(error => console.log(error))
       .finally(() => this.setState({ loading: false }))
@@ -36,6 +54,8 @@ class App extends Component {
 
   render() {
     const champions = this.state.champions.map((data) => <ChampionCard key={data.name} champion={data} />);
+    const summoner = <SummonerCard summoner={this.state.requestedSummoner} />
+
     let button;
     if (this.state.loading)
       button = <button onClick={this.buttonClicked} class="animate-bounce h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" disabled>Searching...</button>;
@@ -69,6 +89,7 @@ class App extends Component {
             {button}
           </div>
         </form>
+        {summoner}
         {this.state.champions.length !== 0 &&
           <div className="mt-3 p-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl">
             <div className="grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-4 p-3 bg-gray-200 rounded-3xl">
