@@ -63,9 +63,9 @@ class App extends Component {
       button = <button onClick={this.buttonClicked} className="h-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Search</button>;
 
     return (
-      <div className="flex flex-wrap flex-col justify-center items-center">
+      <div className="container mx-auto px-4">
         <div className="flex flex-col">
-          <form className="flex items-stretch mt-8">
+          <form className="flex items-stretch w-full mt-8">
             <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 mx-2">
               <label className="mb-1">Summoner Name:</label>
               <input placeholder="Kinkymonkey" className="text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
