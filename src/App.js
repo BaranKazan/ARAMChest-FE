@@ -64,32 +64,34 @@ class App extends Component {
 
     return (
       <div className="flex flex-wrap flex-col justify-center items-center">
-        <form className="flex items-stretch pt-8">
-          <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 mx-2">
-            <label className="mb-1">Summoner Name:</label>
-            <input placeholder="Kinkymonkey" className="text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
-          </div>
-          <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 mx-2">
-            <label className="mb-1">Region:</label>
-            <select className="py-2 text-sm text-black border border-gray-200 rounded-md" onChange={e => this.setState({ region: e.target.value })}>
-              <option value="BRAZIL">BR</option>
-              <option value="EUROPE_NORTH_EAST">EUNE</option>
-              <option value="EUROPE_WEST">EUW</option>
-              <option value="JAPAN">JP</option>
-              <option value="KOREA">KR</option>
-              <option value="LATIN_AMERICA_NORTH">LAN</option>
-              <option value="LATIN_AMERICA_SOUTH">LAS</option>
-              <option value="NORTH_AMERICA">NA</option>
-              <option value="OCEANIA">OCE</option>
-              <option value="RUSSIA">RU</option>
-              <option value="TURKEY">TR</option>
-            </select>
-          </div>
-          <div className="flex-none mx-2">
-            {button}
-          </div>
-        </form>
-        {summoner}
+        <div className="flex flex-col">
+          <form className="flex items-stretch mt-8">
+            <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 mx-2">
+              <label className="mb-1">Summoner Name:</label>
+              <input placeholder="Kinkymonkey" className="text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
+            </div>
+            <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 mx-2">
+              <label className="mb-1">Region:</label>
+              <select className="py-2 text-sm text-black border border-gray-200 rounded-md" onChange={e => this.setState({ region: e.target.value })}>
+                <option value="BRAZIL">BR</option>
+                <option value="EUROPE_NORTH_EAST">EUNE</option>
+                <option value="EUROPE_WEST">EUW</option>
+                <option value="JAPAN">JP</option>
+                <option value="KOREA">KR</option>
+                <option value="LATIN_AMERICA_NORTH">LAN</option>
+                <option value="LATIN_AMERICA_SOUTH">LAS</option>
+                <option value="NORTH_AMERICA">NA</option>
+                <option value="OCEANIA">OCE</option>
+                <option value="RUSSIA">RU</option>
+                <option value="TURKEY">TR</option>
+              </select>
+            </div>
+            <div className="flex-none mx-2">
+              {button}
+            </div>
+          </form>
+          {summoner}
+        </div>
         {this.state.champions.length !== 0 &&
           <div className="mt-3 p-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl">
             <div className="grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-4 p-3 bg-gray-200 rounded-3xl">
