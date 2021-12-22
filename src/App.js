@@ -58,19 +58,19 @@ class App extends Component {
 
     let button;
     if (this.state.loading)
-      button = <button onClick={this.buttonClicked} className="animate-bounce h-full w-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" disabled>Searching...</button>;
+      button = <button onClick={this.buttonClicked} className="animate-bounce h-full w-full shadow-lg py-2 px-4 text-white font-semibold rounded-lg bg-blue-800 outline-none" disabled>Searching...</button>;
     else
-      button = <button onClick={this.buttonClicked} className="h-full w-full shadow-lg py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Search</button>;
+      button = <button onClick={this.buttonClicked} className="transition h-full w-full shadow-lg py-2 px-4 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-opacity-75">Search</button>;
 
     return (
       <div className="container mx-auto px-4">
         <div className="flex flex-col">
           <form className="flex flex-col sm:flex-row items-stretch w-full mt-8">
-            <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2">
+            <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
               <label className="mb-1">Summoner Name:</label>
-              <input placeholder="Kinkymonkey" className="text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
+              <input placeholder="Kinkymonkey" className="text-sm text-black placeholder-gray-500 border-2 border-gray-200 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
             </div>
-            <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2">
+            <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
               <label className="mb-1">Region:</label>
               <select className="py-2 text-sm text-black border border-gray-200 rounded-md" onChange={e => this.setState({ region: e.target.value })}>
                 <option value="BRAZIL">BR</option>
