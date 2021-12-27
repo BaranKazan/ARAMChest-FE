@@ -94,10 +94,8 @@ class App extends Component {
         {this.state.champions.length !== 0 &&
           <>
             {summoner}
-            <div className="mt-3 p-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl">
-              <div className="grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-4 p-3 bg-gray-200 rounded-3xl">
+              <div className="mt-3 grid p-3 bg-gray-100 border-2 border-gold-800 rounded-3xl lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-4">
                 {champions}
-              </div>
             </div>
           </>
         }
