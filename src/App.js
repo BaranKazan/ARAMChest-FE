@@ -71,12 +71,13 @@ class App extends Component {
             <form className="flex flex-col sm:flex-row items-stretch w-full mt-8">
               <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
                 <label className="mb-1">Summoner Name:</label>
-                <input placeholder="God Ω War" className="text-sm text-black placeholder-gray-500 border-2 border-gray-200 rounded-md py-2 pl-2" 
-                onChange={e => this.setState({ summonerName: e.target.value })}></input>
+                <input placeholder="God Ω War" className="text-sm text-black placeholder-gray-500 border-2 border-blue-900 focus:border-blue-800 
+                rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
               </div>
               <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
                 <label className="mb-1">Region:</label>
-                <select className="py-2 text-sm text-black border border-gray-200 rounded-md" onChange={e => this.setState({ region: e.target.value })}>
+                <select className="py-2 text-sm text-black border-2 border-blue-900 focus:border-blue-800 rounded-md" 
+                onChange={e => this.setState({ region: e.target.value })}>
                   <option value="BRAZIL">BR</option>
                   <option value="EUROPE_NORTH_EAST">EUNE</option>
                   <option value="EUROPE_WEST">EUW</option>
