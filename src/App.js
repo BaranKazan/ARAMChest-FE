@@ -63,7 +63,7 @@ class App extends Component {
       button = <button onClick={this.buttonClicked} className="transition h-full w-full shadow-lg py-2 px-4 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-opacity-75">Search</button>;
 
     return (
-      <div>
+      <div className="flex flex-col h-screen justify-between">
         <div className="container mx-auto px-4">
           <div className="flex flex-col">
             <form className="flex flex-col sm:flex-row items-stretch w-full mt-8">
@@ -95,15 +95,17 @@ class App extends Component {
           {this.state.champions.length !== 0 &&
             <>
               {summoner}
-              <div className="mt-3 grid p-3 bg-gray-100 border-2 border-gold-800 rounded-3xl lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-4">
+              <div className="my-3 grid p-3 bg-gray-100 border-2 border-gold-800 rounded-3xl lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-4">
                 {champions}
               </div>
             </>
           }
         </div>
-        <footer class="absolute bottom-0 w-full bg-white">
-          <div class="py-16 flex flex-col justify-center items-center">
-            <p class="mt-6 text-xs lg:text-sm text-gray-500">Developed by Baran Kazan</p>
+        <footer className="w-full bg-white">
+          <div className="py-8 flex flex-col justify-center items-center">
+            <p className="text-xs lg:text-sm text-gray-500">
+              Developed by <a className="text-gold-900 underline" href="https://github.com/BaranKazan" target="_blank" rel="noreferrer">Baran Kazan</a>
+            </p>
           </div>
         </footer>
       </div>
