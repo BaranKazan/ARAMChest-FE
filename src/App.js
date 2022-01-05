@@ -25,15 +25,6 @@ class App extends Component {
 
   buttonClicked = (e) => {
     e.preventDefault();
-    if(this.state.summonerName.length < 3 ) {
-      console.log("short")
-      alert("Summoner name is too short")
-      return;
-    } else if (this.state.summonerName.length > 16){
-      console.log("long")
-      alert("Summoner name is too long");
-      return;
-    }
     this.setState({ loading: true });
     console.log("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region);
     fetch("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region)
