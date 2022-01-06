@@ -1,7 +1,8 @@
 import './App.css';
 import React, { Component } from 'react';
 import ChampionCard from './components/ChampionCard';
-import SummonerCard from './components/SummonerCard'
+import SummonerCard from './components/SummonerCard';
+import Title from "./assets/title.png";
 
 class App extends Component {
 
@@ -70,11 +71,12 @@ class App extends Component {
     return (
       <div className="flex flex-col h-screen justify-between">
         <div className="container mx-auto px-4">
+          <img className="" src={Title} alt="Title"/>
           <div className="flex flex-col">
-            <form className="flex flex-col sm:flex-row items-stretch w-full mt-8">
+            <form className="flex flex-col sm:flex-row items-stretch w-full">
               <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
                 <label className="mb-1">Summoner Name:</label>
-                <input placeholder="God Ω War" className="text-sm text-black placeholder-gray-500 border-2 border-blue-900 focus:border-blue-800 
+                <input placeholder="e.g. God Ω War" className="text-sm text-black placeholder-gray-500 border-2 border-blue-900 focus:border-blue-800 
                 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
               </div>
               <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
