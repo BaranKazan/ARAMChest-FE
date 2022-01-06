@@ -25,21 +25,13 @@ class App extends Component {
 
   buttonClicked = (e) => {
     e.preventDefault();
-    if(this.state.summonerName.length < 3 ) {
-      console.log("short")
-      alert("Summoner name is too short")
-      return;
-    } else if (this.state.summonerName.length > 16){
-      console.log("long")
-      alert("Summoner name is too long");
-      return;
-    }
     this.setState({ loading: true });
     console.log("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region);
     fetch("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region)
-      .then(response => {
+      .then(async response => {
         if (!response.ok) {
-          throw Error(response.statusText);
+          let data = await response.json()
+          throw Error(data.httpStatus + " - " + data.message);
         }
         return response.json();
       })
@@ -57,8 +49,7 @@ class App extends Component {
         })
       })
       .catch(error => {
-        alert("Summoner does not exist in given region")
-        console.log(error)
+        alert(error.message)
       })
       .finally(() => this.setState({ loading: false }))
   }
@@ -88,8 +79,8 @@ class App extends Component {
               </div>
               <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
                 <label className="mb-1">Region:</label>
-                <select className="py-2 text-sm text-black border-2 border-blue-900 focus:border-blue-800 rounded-md" 
-                onChange={e => this.setState({ region: e.target.value })}>
+                <select className="py-2 text-sm text-black border-2 border-blue-900 focus:border-blue-800 rounded-md"
+                  onChange={e => this.setState({ region: e.target.value })}>
                   <option value="BRAZIL">BR</option>
                   <option value="EUROPE_NORTH_EAST">EUNE</option>
                   <option value="EUROPE_WEST">EUW</option>
