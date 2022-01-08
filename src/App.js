@@ -76,7 +76,7 @@ class App extends Component {
             <form className="flex flex-col sm:flex-row items-stretch w-full">
               <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
                 <label className="mb-1">Summoner Name:</label>
-                <input placeholder="e.g. God Ω War" className="text-sm text-black placeholder-gray-500 border-2 border-blue-900 focus:border-blue-800 
+                <input placeholder="e.g. KinkyMonkey" className="text-sm text-black placeholder-gray-500 border-2 border-blue-900 focus:border-blue-800 
                 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}></input>
               </div>
               <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
