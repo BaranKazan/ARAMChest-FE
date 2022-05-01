@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
             <Route path="/riot.txt" element={<Riot />} />
         </Routes>
     );
