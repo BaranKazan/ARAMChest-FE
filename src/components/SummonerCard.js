@@ -8,7 +8,7 @@ class SummonerCard extends Component {
                 <div className="text-sm">
                     <p className="text-gray-900 font-bold">{this.props.summoner.name}</p>
                     <p className="text-gray-600">{this.props.summoner.region}</p>
-                    <p className="text-gray-600 leading-none">{this.props.summoner.level}</p>
+                    <p className="text-gray-600 leading-none">Level: {this.props.summoner.level}</p>
                 </div>
             </div>
         );
