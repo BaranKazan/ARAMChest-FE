@@ -75,12 +75,12 @@ class Home extends Component {
                         <form className="flex flex-col sm:flex-row items-stretch w-full">
                             <div className="flex flex-col flex-grow bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
                                 <label className="mb-1">Summoner Name:</label>
-                                <input placeholder="e.g. KinkyMonkey" className="text-sm text-black placeholder-gray-500 border-2 border-blue-900 focus:border-blue-800
+                                <input placeholder="e.g. KinkyMonkey" className="text-sm text-black placeholder-gray-500 border border-blue-900 focus:border-blue-800
                 rounded-md py-2 pl-2" onChange={e => this.setState({ summonerName: e.target.value })}/>
                             </div>
                             <div className="flex flex-col flex-none bg-white shadow-lg rounded-lg p-3 my-2 sm:mx-2 border border-gold-800">
                                 <label className="mb-1">Region:</label>
-                                <select className="py-2 text-sm text-black border-2 border-blue-900 focus:border-blue-800 rounded-md"
+                                <select className="py-2 text-sm text-black border border-blue-900 focus:border-blue-800 rounded-md"
                                         onChange={e => this.setState({ region: e.target.value })}>
                                     <option value="BRAZIL">BR</option>
                                     <option value="EUROPE_NORTH_EAST">EUNE</option>
@@ -103,7 +103,7 @@ class Home extends Component {
                     {this.state.champions.length !== 0 &&
                         <>
                             {summoner}
-                            <div className="my-3 grid p-3 bg-gray-100 border-2 border-gold-800 rounded-3xl lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-4">
+                            <div className="my-3 grid p-3 bg-gray-100 border border-gold-800 rounded-3xl lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-4">
                                 {champions}
                             </div>
                         </>
