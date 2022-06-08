@@ -26,7 +26,6 @@ class Home extends Component {
     buttonClicked = (e) => {
         e.preventDefault();
         this.setState({ loading: true });
-        console.log("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region);
         fetch("https://chest-api.azurewebsites.net/summonerName/" + this.state.summonerName + "/region/" + this.state.region)
             .then(async response => {
                 if (!response.ok) {
