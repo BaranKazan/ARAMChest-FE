@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ChampionCard from './../components/ChampionCard';
 import SummonerCard from './../components/SummonerCard';
-import Title from "./../assets/title.png";
+import Title from "./../assets/title.webp";
 
 class Home extends Component {
 
